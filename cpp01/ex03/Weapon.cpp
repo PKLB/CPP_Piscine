@@ -14,8 +14,8 @@ const string Weapon::setType(string str){
 	return (str);
 }
 
-Weapon::Weapon(){
-
+Weapon::Weapon(string str){
+	setType(str);
 }
 
 Weapon::~Weapon(){
