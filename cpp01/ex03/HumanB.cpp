@@ -5,18 +5,18 @@
 #include <string>
 using std::string;
 
-void setWeapon(Weapon object){
-
+void HumanB::setWeapon(Weapon object){
+	this->weapon = object.getType();
 }
 
 void HumanB::attack(){
-	std::cout << name << " attacks with their \n";
+	std::cout << name << " attacks with their " << weapon << "\n";
 }
 
-HumanB::HumanB(string name) : weaponClass(""){
+HumanB::HumanB(string name){
+	this->name = name;
 }
-// -> Because WeaponObject is from another class I have to explicitly tell him to call his own constructor
-// inside this constructor
+
 
 HumanB::~HumanB(){
 	

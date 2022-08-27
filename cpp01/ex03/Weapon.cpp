@@ -10,7 +10,7 @@ const string& Weapon::getType(){
 }
 
 const string Weapon::setType(string str){
-	type = str;
+	this->type = str;
 	return (str);
 }
 
