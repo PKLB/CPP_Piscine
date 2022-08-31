@@ -7,14 +7,13 @@ using std::string;
 
 void HumanB::setWeapon(Weapon &object){
 	weaponClass = &object;
-	//weaponClass->setType(object.getType());
 }
 
 void HumanB::attack(){
 	if (weaponClass != NULL)
 		std::cout << name << " attacks with their " <<  weaponClass->getType() << "\n";
 	else
-		std::cout << "i have no weapon bohooooo\n";
+		std::cout << "I cannot attack without a weapon!\n";
 }
 
 HumanB::HumanB(string name) : weaponClass(NULL){
