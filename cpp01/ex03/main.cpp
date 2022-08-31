@@ -8,21 +8,21 @@ using std::string;
 int main()
 {
 	{
-		Weapon club = Weapon("crude spiked club");
+		Weapon club = Weapon("1");
 		HumanA bob("Bob", club);
 		bob.attack();
-		club.setType("some other type of club");
+		club.setType("2");
+		//std::cout << club.getType() << std::endl;
 		bob.attack();
 	}
 	{
-		Weapon club = Weapon("crude spiked club");
+		Weapon club = Weapon("1");
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
-		club.setType("some other type of club");
+		club.setType("2");
 		jim.attack();
 	}
-return 0;
 }
 
 /*Now, create two classes: HumanA and HumanB. They both have a Weapon and a

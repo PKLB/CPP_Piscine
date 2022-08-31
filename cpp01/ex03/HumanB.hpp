@@ -10,11 +10,11 @@ class   HumanB
 {
     public:
 		HumanB(string name);
-		void setWeapon(Weapon object);
+		void setWeapon(Weapon &object);
 		void attack();
 		~HumanB();
     private:
-		string weapon;
+		Weapon	*weaponClass;
         string 	name;
 };
 

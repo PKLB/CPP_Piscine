@@ -6,7 +6,7 @@
 using std::string;
 
 const string& Weapon::getType(){
-	return (type);
+	return (this->type);
 }
 
 const string Weapon::setType(string str){
@@ -19,5 +19,5 @@ Weapon::Weapon(string str){
 }
 
 Weapon::~Weapon(){
-	
+
 }

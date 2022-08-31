@@ -9,12 +9,12 @@ using std::string;
 class   HumanA
 {
     public:
-		HumanA(string name, Weapon object);
-		Weapon	weaponClass;
+		HumanA(string name, Weapon &object);
 		void attack();
 		~HumanA();
     private:
+		Weapon	&weaponClass;
         string 	name;
 };
-
+//using a reference so if the weapon is modified, HumanA will be able to access the change
 #endif
