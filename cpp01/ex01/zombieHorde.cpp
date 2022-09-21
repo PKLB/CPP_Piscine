@@ -6,7 +6,7 @@ using std::string;
 Zombie* Zombie::zombieHorde( int N, std::string name )
 {
 	Zombie *horde = new Zombie[N];
-	//Allocating an array of N zombies
+	//"new" alone will create a instance while "new[]" will create an N-element array
 
 	for (int i = 0; i < N; i++)
 		horde[i].newZombie(name);

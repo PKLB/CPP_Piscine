@@ -22,7 +22,7 @@ int main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
-return 0;
+	return 0;
 }
 
 /*Now, create two classes: HumanA and HumanB. They both have a Weapon and a

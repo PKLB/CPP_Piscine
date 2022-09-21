@@ -10,11 +10,11 @@ class Contact {
 		string	_PhoneNumber;
 		string	_DarkestSecret;
 	public:
-		string getFirstName();
-		string getLastName();
-		string getNickname();
-		string getDarkestSecret(); 
-		string getPhoneNumber(); 
+		string 	getFirstName();
+		string 	getLastName();
+		string 	getNickname();
+		string 	getDarkestSecret(); 
+		string 	getPhoneNumber(); 
 		void	modifyFirstName(const string str);
 		void	modifyLastName(const string str);
 		void	modifyNickname(const string str);

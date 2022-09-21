@@ -17,5 +17,4 @@ HumanA::HumanA(string name, Weapon &object) : weaponClass(object){
 // inside this constructor
 
 HumanA::~HumanA(){
-
 }

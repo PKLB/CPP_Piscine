@@ -36,18 +36,10 @@ int main(int argc, char *argv[])
 {
 	if (argc == 4)
 	{
-		string document = argv[1];
-		string outdocument = document + ".replace";
+		string filename = argv[1];
+		string filenameReplace = filename + ".replace";
 		string s1 = argv[2];
 		string s2 = argv[3];
-
-		std::ifstream infile(document, std::ios::binary);
-		std::ofstream outfile(outdocument, std::ios::binary);
-
-		string word;
-		string sentence;
-		while (getline(infile, word))
-			sentence += word;
-		std::cout << sentence << std::endl;
+		
 	}
 }

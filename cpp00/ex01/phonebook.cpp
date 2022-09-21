@@ -180,7 +180,10 @@ void	searchContact(PhoneBook *book)
 	std::cout << "\033[1;36m-------------------------------------------------\n";
 	typeWriter("\033[1;34mPlease enter the index of the contact you want to display\033[0m\n");
 	getline(std::cin, str);
-	displayContact(book, str[0]);
+	if (str.length() > 1)
+		displayContact(book, '8');
+	else
+		displayContact(book, str[0]);
 	return ;
 }
 
