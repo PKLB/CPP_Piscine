@@ -17,9 +17,8 @@ Zombie::Zombie()
 
 Zombie::~Zombie()
 {
-	//from what I've understood the destructor will automatically free the object
-	if (name.length() <= 0)
-		std::cout << "🧟 \033[1;31mUnknown Zombie\033[0m:" << " has been deleted." <<std::endl;
+	if (name.empty())
+		std::cout << "🧟 \033[1;31mUnknown Zombie\033[0m" << " has been deleted." <<std::endl;
 	else
 		std::cout << name << " has been deleted." << std::endl;
 }

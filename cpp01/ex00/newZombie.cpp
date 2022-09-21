@@ -6,7 +6,6 @@ using std::string;
 Zombie* Zombie::newZombie( std::string name )
 {
 	Zombie *toto = new Zombie;
-	//"this->" allows us to modify the private variable that has the same name than the parameter in this function
 	this->name = name;
     return (toto);
 }
