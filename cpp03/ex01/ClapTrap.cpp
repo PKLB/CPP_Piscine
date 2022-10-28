@@ -2,12 +2,12 @@
 #include <string>
 #include <iostream>
 
-ClapTrap::ClapTrap(): _name("Default name")
+ClapTrap::ClapTrap(): _name("Default name"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
 {
 	std::cout << "\033[1;32mDefault constructor called\033[0m\n";
 }
 
-ClapTrap::ClapTrap(std::string name): _name(name), _HitPoints(100), _EnergyPoints(50), _AttackDamage(20)
+ClapTrap::ClapTrap(std::string name): _name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
 {
 	std::cout << "\033[1;32mConstructor called\033[0m\n";
 }
