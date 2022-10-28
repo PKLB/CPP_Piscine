@@ -7,8 +7,9 @@ class Animal
 {
 	public:
 		Animal();
+		Animal(string src);
 		Animal(const Animal &src);
-		~Animal();
+		virtual ~Animal();
 
 		string getType() const;
 		void setType(string src);
@@ -20,11 +21,3 @@ class Animal
 	protected:
 		std::string _type;
 };
-
-
-
-
-// virtual makeSound()
-// {
-// 	std::cout << "miou\n";
-// };

@@ -6,6 +6,11 @@ Animal::Animal(): _type("Animal")
 {
 	std::cout << "Animal constructor called \n";	
 }
+
+Animal::Animal(string src): _type(src)
+{
+	std::cout << "Animal constructor called \n";	
+}ß
                                                                                   
 Animal::~Animal()
 {
@@ -14,7 +19,6 @@ Animal::~Animal()
 
 Animal::Animal(const Animal &src)
 {
-
 }
 
 Animal &Animal::operator=(const Animal& src)
