@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "Brain.hpp"
 using std::string;
 
 class Animal

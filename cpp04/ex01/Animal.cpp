@@ -19,6 +19,7 @@ Animal::~Animal()
 
 Animal::Animal(const Animal &src)
 {
+	this->_type = src._type;
 }
 
 Animal &Animal::operator=(const Animal& src)

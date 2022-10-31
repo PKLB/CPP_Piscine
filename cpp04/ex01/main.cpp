@@ -3,21 +3,18 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
 int	main ()
 {
-	const Animal *tab[10];
-	for (int i = 0; i < 5; i++)
+	Animal *tab[4];
+	for (int i = 0; i < 2; i++)
 		tab[i] = new Dog();
-	for (int i = 5; i < 10; i++)
+	for (int i = 2; i < 4; i++)
 		tab[i] = new Cat();
 
-	std::cout << tab[5]->getType() << std::endl;
-	
-	for (int i = 0; i < 10; i++)
+	tab[1]->makeSound();
+	tab[3]->makeSound();
+	for (int i = 0; i < 4; i++)
 		delete tab[i];
-
 	return (0);
 }
