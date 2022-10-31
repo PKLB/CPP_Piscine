@@ -4,8 +4,6 @@ RM=rm -f
 NAME=a.out
 SRCS= 	main.cpp \
 		Animal.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
 		Dog.cpp \
 		Cat.cpp \
 		Brain.cpp \
