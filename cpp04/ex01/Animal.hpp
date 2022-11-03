@@ -20,5 +20,5 @@ class Animal
 
 		virtual void makeSound() const;
 	protected:
-		std::string _type;
+		string _type;
 };

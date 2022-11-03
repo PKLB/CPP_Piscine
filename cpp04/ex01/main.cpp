@@ -11,7 +11,6 @@ int	main ()
 		tab[i] = new Dog();
 	for (int i = 2; i < 4; i++)
 		tab[i] = new Cat();
-
 	tab[1]->makeSound();
 	tab[3]->makeSound();
 	for (int i = 0; i < 4; i++)
