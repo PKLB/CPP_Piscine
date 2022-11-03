@@ -4,5 +4,7 @@
 
 int main()
 {
+	Bureaucrat toto;
+	std::cout << toto;
 	return 0;
 }
