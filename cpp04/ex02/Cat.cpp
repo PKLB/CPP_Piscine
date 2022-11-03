@@ -1,34 +1,35 @@
 #include <string>
 #include <iostream>
-#include "Dog.hpp"
+#include "Cat.hpp"
 #include "Brain.hpp"
 
-Dog::Dog()
+Cat::Cat()
 {
 	_Brain = new class Brain();
-	this->_type = "Dog";
-	std::cout << "Dog constructor called \n";	
+	this->_type = "Cat";
+	std::cout << "Cat constructor called \n";	
 }
                                                                                   
-Dog::~Dog()
+Cat::~Cat()
 {
 	delete _Brain;
-	std::cout << "Dog destructor called \n";
+	std::cout << "Cat destructor called \n";
 }
 
-Dog::Dog(const Dog &src)
+
+Cat::Cat(const Cat &src)
 {
 	this->_Brain = src._Brain;
 }
 
-Dog &Dog::operator=(const Dog& src)
+Cat &Cat::operator=(const Cat& src)
 {
 	this->_Brain = src._Brain;
 	std::cout << "Copy assignement operator called\n";
 	return *this;
 }
 
-void Dog::makeSound() const
+void Cat::makeSound() const
 {
-	std::cout << "wouaf wouaf je suis le chien\n";
+	std::cout << "miou miou je suis le chat\n";
 }

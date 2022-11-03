@@ -17,7 +17,7 @@ class Animal
 				
 		Animal &operator=(const Animal& src);
 
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
 	protected:
 		string _type;
 };
