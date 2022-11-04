@@ -8,14 +8,20 @@ class	Bureaucrat
 	public:
 		Bureaucrat();
 		Bureaucrat(string src);
+		Bureaucrat(string src, int grade);
 		Bureaucrat(const Bureaucrat &src);
 		~Bureaucrat();
 
 		Bureaucrat &operator=(const Bureaucrat& src);
 
-		int getGrade() const;
-		string getName() const;
-		void setGrade(int src);
+		int 	getGrade() const;
+		string 	getName() const;
+		void 	setGrade(int src);
+		void	upGrade();
+		void	downGrade();
+
+		string	GradeTooHighException() const;
+		string	GradeTooLowException() const;
 
 	private:
 		int _grade;

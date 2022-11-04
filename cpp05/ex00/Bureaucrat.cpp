@@ -10,6 +10,12 @@ Bureaucrat::Bureaucrat(string src): _name(src)
 	std::cout << "Bureaucrat has been created" << std::endl;
 }
 
+Bureaucrat::Bureaucrat(string src, int grade): _name(src)
+{
+	setGrade(grade);
+	std::cout << "Bureaucrat has been created" << std::endl;
+}
+
 Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src._name)
 {
 	this->_grade = src._grade; 
@@ -47,3 +53,42 @@ void Bureaucrat::setGrade(int src)
 {
 	this->_grade = src;
 }
+
+void	Bureaucrat::upGrade()
+{
+	try
+	{
+		if (this->_grade - 1 < 1)
+			throw(GradeTooHighException());
+		this->_grade--;
+	}
+	catch (const string str)
+	{
+		std::cout << str << std::endl;
+	}
+}
+
+void	Bureaucrat::downGrade()
+{
+	try
+	{
+		if (this->_grade + 1 > 150)
+			throw(GradeTooLowException());
+		this->_grade++;
+	}
+	catch (const string str)
+	{
+		std::cout << str << std::endl;
+	}
+}
+
+string	Bureaucrat::GradeTooHighException() const
+{
+	return ("Grade too high!");
+}
+
+string	Bureaucrat::GradeTooLowException() const
+{
+	return ("Grade too low!");
+}
+
