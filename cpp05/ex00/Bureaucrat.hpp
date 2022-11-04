@@ -7,6 +7,7 @@ class	Bureaucrat
 {
 	public:
 		Bureaucrat();
+		Bureaucrat(string src);
 		Bureaucrat(const Bureaucrat &src);
 		~Bureaucrat();
 
@@ -15,7 +16,6 @@ class	Bureaucrat
 		int getGrade() const;
 		string getName() const;
 		void setGrade(int src);
-		void setName(string src);
 
 	private:
 		int _grade;
