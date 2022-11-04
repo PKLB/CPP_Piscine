@@ -18,6 +18,6 @@ int main()
 	yoyo.upGrade();
 	yoyo.upGrade();
 	yoyo.downGrade();
-	std::cout << yoyo;
+	std::cout << yoyo << std::endl;
 	return 0;
 }
