@@ -1,18 +1,38 @@
 #include "Form.hpp"
 
-Form::Form(): _name("Random papers"), _isSigned(0)
+Form::Form(): _name("Random papers"), _isSigned(0), _execGrade(0), _signGrade(0)
 {
 	std::cout << "Form has been created" << std::endl;
 }
 
-Form::Form(string src): _name(src), _isSigned(0)
+Form::Form(string src): _target(src), _isSigned(0), _execGrade(0), _signGrade(0)
 {
 	std::cout << "Form has been created" << std::endl;
 }
 
-Form::Form(const Form &src): _name(src._name), _isSigned(src.getSigned()), _execGrade(src._execGrade), _signGrade(src._signGrade)
+Form::Form(string target, string src): _target(target), _name(src), _isSigned(0), _execGrade(0), _signGrade(0)
 {
 	std::cout << "Form has been created" << std::endl;
+}
+
+Form::Form(int isSigned, int execGrade, int signGrade): _name ("Default"), _isSigned(isSigned), _execGrade(execGrade), _signGrade(signGrade)
+{
+	std::cout << "Form has been created" << std::endl;
+}
+
+Form::Form(string str, int isSigned, int execGrade, int signGrade): _name ("Default"), _target (str), _isSigned(isSigned), _execGrade(execGrade), _signGrade(signGrade)
+{
+	std::cout << "Form has been created" << std::endl;
+}
+
+Form::Form(string target, string str, int isSigned, int execGrade, int signGrade): _target(target), _name (str), _isSigned(isSigned), _execGrade(execGrade), _signGrade(signGrade)
+{
+	std::cout << "Form has been created" << std::endl;
+}
+
+Form::Form(const Form &src): _target(src._target), _name(src._name), _isSigned(src.getSigned()), _execGrade(src._execGrade), _signGrade(src._signGrade)
+{
+	std::cout << "Form has been created7" << std::endl;
 }
 
 Form::~Form()
@@ -56,6 +76,11 @@ int Form::getSignGrade() const
 	return (this->_signGrade);
 }
 
+string Form::getTarget() const
+{
+	return (this->_target);
+}
+
 void Form::setExecGrade(int src)
 {
 	this->_execGrade = src;
@@ -86,8 +111,13 @@ string	Form::GradeTooHighException() const
 	return ("Grade too high!");
 }
 
+string	Form::unsignedException() const
+{
+	return ("Form isn't signed!");
+}
+
 string	Form::GradeTooLowException(const Bureaucrat& src) const
 {
-	src.signForm(this->_name, 1);
-	return ("Grade too low!");
+	return (src.signForm(this->_name, 1));
 }
+
