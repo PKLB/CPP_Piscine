@@ -1,4 +1,5 @@
 #pragma once
+#include <exception>
 #include "Bureaucrat.hpp"
 
 class	Form
@@ -25,9 +26,19 @@ class	Form
 		void			beSigned(const Bureaucrat& src);
 		virtual void 	execute(Bureaucrat const & executor) const = 0;
 
-		string			GradeTooHighException() const;
-		string			unsignedException() const;
-		string			GradeTooLowException(const Bureaucrat& src) const;
+
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what() const throw(){
+				return("Grade too high !");
+			}
+		};
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what() const throw(){
+				return("Grade too low !");
+			}
+		};
 
 	private:
 		bool			_isSigned;

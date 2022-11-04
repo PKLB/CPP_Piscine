@@ -30,15 +30,15 @@ void 	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	try
 	{
 		if (getSigned() == 0)
-			throw(unsignedException());
+			throw(GradeTooLowException());
 		if (executor.getGrade() > this->getExecGrade())
-			throw(GradeTooLowException(executor));
+			throw(GradeTooLowException());
 		std::cout << executor.getName() << " executed " << getName() << std::endl;
 		std::cout << executor.getName() << " created " << getTarget() << std::endl;
 	}
-	catch(const string str)
+	catch (const std::exception &str)
 	{
-		std::cout << str; 
+		std::cout << str.what() << std::endl;
 	}
 }
 

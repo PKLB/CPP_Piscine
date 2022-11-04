@@ -14,9 +14,6 @@ class	ShrubberyCreationForm : public Form
 
 		void 	execute(Bureaucrat const & executor) const;
 
-		// string	GradeTooHighException() const;
-		// string	GradeTooLowException(const Bureaucrat& src) const;
-
 };
 
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& src);
