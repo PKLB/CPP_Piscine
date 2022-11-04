@@ -64,7 +64,7 @@ void	Bureaucrat::upGrade()
 	try
 	{
 		if (this->_grade - 1 < 1)
-			throw(GradeTooLowException());
+			throw Bureaucrat::GradeTooLowException();
 		this->_grade--;
 	}
 	catch (const std::exception &str)

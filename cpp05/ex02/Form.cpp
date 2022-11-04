@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form(): _name("Random papers"), _isSigned(0), _execGrade(0), _signGrade(0){
 	std::cout << "Form has been created" << std::endl;
@@ -73,19 +74,4 @@ void Form::setExecGrade(int src){
 void Form::setSignGrade(int src)
 {
 	this->_signGrade = src;
-}
-
-void	Form::beSigned(const Bureaucrat& src){
-	try
-	{
-		if (src.getGrade() > this->_signGrade)
-			throw(GradeTooLowException());
-		this->_isSigned = 1;
-		//src.signForm(this->_name, 0);
-	}
-	catch (const std::exception &str)
-	{
-		std::cout << str.what() << std::endl;
-		//src.signForm(this->_name, 1);
-	}
 }

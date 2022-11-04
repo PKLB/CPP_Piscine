@@ -1,56 +1,48 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+using std::string;
 
-Bureaucrat::Bureaucrat(): _name("PNJ")
-{
+Bureaucrat::Bureaucrat(): _name("PNJ"){
 	std::cout << "Bureaucrat " << this->_name << " has been created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(string src): _name(src)
-{
+Bureaucrat::Bureaucrat(string src): _name(src){
 	std::cout << "Bureaucrat " << this->_name << " has been created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(string src, int grade): _name(src)
-{
+Bureaucrat::Bureaucrat(string src, int grade): _name(src){
 	setGrade(grade);
 	std::cout << "Bureaucrat " << this->_name << " has been created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src._name)
-{
+Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src._name){
 	this->_grade = src._grade; 
 	std::cout << "Bureaucrat " << this->_name << " has been created" << std::endl;
 }
 
-Bureaucrat::~Bureaucrat()
-{
+Bureaucrat::~Bureaucrat(){
 	std::cout << "Bureaucrat has been destroyed" << std::endl;
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat& src)
-{
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat& src){
 	this->_grade = src._grade; 
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& src)
-{
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& src){
 	os << src.getName() << ", bureaucrat grade " << src.getGrade() << std::endl;
     return os;
 }
 
-string Bureaucrat::getName() const
-{
+string Bureaucrat::getName() const{
 	return (this->_name);
 }
 
-int Bureaucrat::getGrade() const
-{
+int Bureaucrat::getGrade() const{
 	return (this->_grade);
 }
 
-void Bureaucrat::setGrade(int src)
-{
+void Bureaucrat::setGrade(int src){
 	if (src > 150)
 		this->_grade = 150;
 	else if (src < 1)
@@ -59,12 +51,11 @@ void Bureaucrat::setGrade(int src)
 		this->_grade = src;
 }
 
-void	Bureaucrat::upGrade()
-{
+void	Bureaucrat::upGrade(){
 	try
 	{
 		if (this->_grade - 1 < 1)
-			throw(GradeTooLowException());
+			throw Bureaucrat::GradeTooLowException();
 		this->_grade--;
 	}
 	catch (const std::exception &str)
@@ -73,8 +64,7 @@ void	Bureaucrat::upGrade()
 	}
 }
 
-void	Bureaucrat::downGrade()
-{
+void	Bureaucrat::downGrade(){
 	try
 	{
 		if (this->_grade + 1 > 150)
@@ -86,10 +76,15 @@ void	Bureaucrat::downGrade()
 		std::cout << str.what() << std::endl;
 	}
 }
-
-string Bureaucrat::signForm(string src, int success) const
-{
-	if (success == 0)
-		return (this->_name + " signed " + src + "\n");
-	return (this->_name + " couldn't sign " + src + " because his grade is too low !");
+void	Bureaucrat::signForm(const Form & src){
+	try
+	{
+		if (getGrade() > src.getSignGrade())
+			throw Bureaucrat::GradeTooLowException();
+		std::cout << this->_name << " signed " << src << "\n";
+	}
+	catch (const std::exception &str)
+	{
+		std::cout << this->_name << " couldn't sign " << src << " because " <<  str.what();
+	}
 }

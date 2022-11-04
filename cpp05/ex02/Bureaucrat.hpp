@@ -1,7 +1,9 @@
 #pragma once
-#include <string>
 #include <iostream>
+#include "Form.hpp"
 using std::string;
+
+class Form;
 
 class	Bureaucrat
 {
@@ -17,19 +19,16 @@ class	Bureaucrat
 		int 	getGrade() const;
 		string 	getName() const;
 		void 	setGrade(int src);
-		string	signForm(string src, int success) const;
+		void	signForm(const Form& src);
 		void	upGrade();
 		void	downGrade();
 
-
-		class GradeTooHighException : public std::exception
-		{
+		class GradeTooHighException : public std::exception{
 			virtual const char* what() const throw(){
 				return("Grade too high !");
 			}
 		};
-		class GradeTooLowException : public std::exception
-		{
+		class GradeTooLowException : public std::exception{
 			virtual const char* what() const throw(){
 				return("Grade too low !");
 			}

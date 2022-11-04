@@ -1,6 +1,8 @@
 #pragma once
-#include <exception>
-#include "Bureaucrat.hpp"
+#include <iostream>
+using std::string;
+
+class Bureaucrat;
 
 class	Form
 {
@@ -23,9 +25,7 @@ class	Form
 		int 			getSigned() const;
 		void 			setExecGrade(int src);
 		void 			setSignGrade(int src);
-		void			beSigned(const Bureaucrat& src);
-		virtual void 	execute(Bureaucrat const & executor) const = 0;
-
+		virtual void 	execute(const Bureaucrat &executor) const = 0;
 
 		class GradeTooHighException : public std::exception
 		{

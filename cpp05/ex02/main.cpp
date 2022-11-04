@@ -1,4 +1,5 @@
 #include <string>
+#include <exception>
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
@@ -6,15 +7,13 @@
 
 int main()
 {
-	ShrubberyCreationForm dossier("Plantation d'arbres", "Amazonie");
+	ShrubberyCreationForm dossier("fileName", "target");
 	// std::cout << dossier;
 	Bureaucrat Robert("Robert", 150);
 
-	// dossier.execute(Robert);
-	dossier.beSigned(Robert);
+	dossier.execute(Robert);
 	Robert.setGrade(4);
-	dossier.beSigned(Robert);
-	// dossier.execute(Robert);
-	// std::cout << dossier;
+	dossier.execute(Robert);
+	std::cout << dossier;
 	return 0;
 }
