@@ -71,23 +71,12 @@ void	Form::beSigned(const Bureaucrat& src)
 	try
 	{
 		if (src.getGrade() > this->_signGrade)
-			throw(Form::GradeTooLowException(src));
+			throw Form::GradeTooLowException();
 		this->_isSigned = 1;
 		src.signForm(this->_name, 0);
 	}
-	catch (const string str)
+	catch (const std::exception &str)
 	{
-		std::cout << str << std::endl;
+		std::cout << str.what() << std::endl;
 	}
-}
-
-string	Form::GradeTooHighException() const
-{
-	return ("Grade too high!");
-}
-
-string	Form::GradeTooLowException(const Bureaucrat& src) const
-{
-	src.signForm(this->_name, 1);
-	return ("Grade too low!");
 }

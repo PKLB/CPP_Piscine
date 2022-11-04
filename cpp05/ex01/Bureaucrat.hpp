@@ -21,8 +21,18 @@ class	Bureaucrat
 		void	upGrade();
 		void	downGrade();
 
-		string	GradeTooHighException() const;
-		string	GradeTooLowException() const;
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what() const throw(){
+				return("Grade too high !");
+			}
+		};
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what() const throw(){
+				return("Grade too low !");
+			}
+		};
 
 	private:
 		int _grade;

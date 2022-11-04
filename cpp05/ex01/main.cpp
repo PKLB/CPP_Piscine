@@ -11,6 +11,7 @@ int main()
 	Bureaucrat Roger("Roger", 12);
 	Bureaucrat Albert("Albert", 8);
 	std::cout << Roger;
+	std::cout << Albert;
 	dossier.setSignGrade(10);
 	dossier.setExecGrade(50);
 	dossier.beSigned(Roger);

@@ -64,12 +64,12 @@ void	Bureaucrat::upGrade()
 	try
 	{
 		if (this->_grade - 1 < 1)
-			throw(GradeTooHighException());
+			throw(GradeTooLowException());
 		this->_grade--;
 	}
-	catch (const string str)
+	catch (const std::exception &str)
 	{
-		std::cout << str << std::endl;
+		std::cout << str.what() << std::endl;
 	}
 }
 
@@ -78,23 +78,13 @@ void	Bureaucrat::downGrade()
 	try
 	{
 		if (this->_grade + 1 > 150)
-			throw(Bureaucrat::GradeTooLowException());
+			throw Bureaucrat::GradeTooHighException();
 		this->_grade++;
 	}
-	catch (const string str)
+	catch (const std::exception &str)
 	{
-		std::cout << str << std::endl;
+		std::cout << str.what() << std::endl;
 	}
-}
-
-string	Bureaucrat::GradeTooHighException() const
-{
-	return ("Grade too high!");
-}
-
-string	Bureaucrat::GradeTooLowException() const
-{
-	return ("Grade too low!");
 }
 
 void Bureaucrat::signForm(string src, int success) const

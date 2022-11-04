@@ -18,8 +18,19 @@ class	Form
 		void 	setSignGrade(int src);
 		void	beSigned(const Bureaucrat& src);
 
-		string	GradeTooHighException() const;
-		string	GradeTooLowException(const Bureaucrat& src) const;
+
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what() const throw(){
+				return("Grade too high !");
+			}
+		};
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what() const throw(){
+				return("Grade too low !");
+			}
+		};
 
 	private:
 		bool			_isSigned;
