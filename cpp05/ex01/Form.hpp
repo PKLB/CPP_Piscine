@@ -13,17 +13,18 @@ class	Form
 		string 	getName() const;
 		int 	getExecGrade() const;
 		int 	getSignGrade() const;
+		int 	getSigned() const;
 		void 	setExecGrade(int src);
 		void 	setSignGrade(int src);
+		void	beSigned(const Bureaucrat& src);
 
-		void	beSigned(const Bureaucrat src);
 		string	GradeTooHighException() const;
-		string	GradeTooLowException() const;
+		string	GradeTooLowException(const Bureaucrat& src) const;
 
 	private:
 		bool			_isSigned;
-		int				_ExecGrade;
-		int				_SignGrade;
+		int				_execGrade;
+		int				_signGrade;
 		const 	string 	_name;
 };
 

@@ -17,6 +17,7 @@ class	Bureaucrat
 		int 	getGrade() const;
 		string 	getName() const;
 		void 	setGrade(int src);
+		void	signForm(string src, int success) const;
 		void	upGrade();
 		void	downGrade();
 

@@ -51,7 +51,12 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::setGrade(int src)
 {
-	this->_grade = src;
+	if (src > 150)
+		this->_grade = 150;
+	else if (src < 1)
+		this->_grade = 1;
+	else
+		this->_grade = src;
 }
 
 void	Bureaucrat::upGrade()
