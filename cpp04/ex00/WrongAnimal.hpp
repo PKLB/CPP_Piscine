@@ -15,9 +15,10 @@ class WrongAnimal
 		void setType(string src);
 				
 		WrongAnimal &operator=(const WrongAnimal& src);
-		friend std::ostream& operator<<(std::ostream& os, const WrongAnimal& src);
 
 		virtual void makeSound() const;
 	protected:
 		std::string _type;
 };
+
+ std::ostream& operator<<(std::ostream& os, const WrongAnimal& src);

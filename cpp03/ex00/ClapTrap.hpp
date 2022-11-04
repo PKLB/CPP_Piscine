@@ -11,7 +11,6 @@ class	ClapTrap
 		ClapTrap(std::string name);
 		~ClapTrap();
 		ClapTrap &operator=(const ClapTrap& src);
-		friend std::ostream& operator<<(std::ostream& os, const ClapTrap& src);
 
 		string 	getName() const;
 		int		getHitPoints() const;
@@ -30,5 +29,7 @@ class	ClapTrap
 		int	_EnergyPoints;
 		int	_AttackDamage;
 };
+
+std::ostream& operator<<(std::ostream& os, const ClapTrap& src);
 
 #endif
