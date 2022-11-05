@@ -5,11 +5,11 @@ Form::Form(): _name("Random papers"), _isSigned(0), _execGrade(0), _signGrade(0)
 	std::cout << "Form has been created" << std::endl;
 }
 
-Form::Form(string src): _target(src), _isSigned(0), _execGrade(0), _signGrade(0){
+Form::Form(string target): _target(target), _isSigned(0), _execGrade(0), _signGrade(0){
 	std::cout << "Form has been created" << std::endl;
 }
 
-Form::Form(string target, string src): _target(target), _name(src), _isSigned(0), _execGrade(0), _signGrade(0){
+Form::Form(string target, string name): _target(target), _name(name), _isSigned(0), _execGrade(0), _signGrade(0){
 	std::cout << "Form has been created" << std::endl;
 }
 
@@ -17,11 +17,11 @@ Form::Form(int isSigned, int execGrade, int signGrade): _name ("Default"), _isSi
 	std::cout << "Form has been created" << std::endl;
 }
 
-Form::Form(string str, int isSigned, int execGrade, int signGrade): _name ("Default"), _target (str), _isSigned(isSigned), _execGrade(execGrade), _signGrade(signGrade){
+Form::Form(string target, int isSigned, int execGrade, int signGrade): _name ("Default"), _target (target), _isSigned(isSigned), _execGrade(execGrade), _signGrade(signGrade){
 	std::cout << "Form has been created" << std::endl;
 }
 
-Form::Form(string target, string str, int isSigned, int execGrade, int signGrade): _target(target), _name (str), _isSigned(isSigned), _execGrade(execGrade), _signGrade(signGrade){
+Form::Form(string target, string name, int isSigned, int execGrade, int signGrade): _target(target), _name (name), _isSigned(isSigned), _execGrade(execGrade), _signGrade(signGrade){
 	std::cout << "Form has been created" << std::endl;
 }
 

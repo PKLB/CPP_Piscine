@@ -6,11 +6,11 @@ RobotomyRequestForm::RobotomyRequestForm(): Form(0, 72, 45){
 	std::cout << "RobotomyRequestForm has been created" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(string src): Form(src, 0, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(string target): Form(target, 0, 72, 45){
 	std::cout << "RobotomyRequestForm has been created" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(string name, string src): Form(name, src, 0, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(string name, string target): Form(name, target, 0, 72, 45){
 	std::cout << "RobotomyRequestForm has been created" << std::endl;
 }
 

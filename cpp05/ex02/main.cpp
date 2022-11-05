@@ -5,11 +5,13 @@
 #include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
 	ShrubberyCreationForm dossier("fileName", "target");
-	RobotomyRequestForm mossier("opela", "pleberr");
+	RobotomyRequestForm gossier("opela", "pleberr");
+	PresidentialPardonForm mossier("opela", "pleberr");
 	// std::cout << dossier;
 	Bureaucrat Robert("Robert", 150);
 

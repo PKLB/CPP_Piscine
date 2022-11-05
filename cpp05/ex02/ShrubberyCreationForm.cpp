@@ -5,11 +5,11 @@ ShrubberyCreationForm::ShrubberyCreationForm(): Form(0, 145, 137){
 	std::cout << "ShrubberyCreationForm has been created" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(string src): Form(src, 0, 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(string target): Form(target, 0, 145, 137){
 	std::cout << "ShrubberyCreationForm has been created" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(string name, string src): Form(name, src, 0, 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(string name, string target): Form(name, target, 0, 145, 137){
 	std::cout << "ShrubberyCreationForm has been created" << std::endl;
 }
 

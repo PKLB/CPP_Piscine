@@ -6,8 +6,8 @@ class	ShrubberyCreationForm : public Form
 {
 	public:
 		ShrubberyCreationForm();
-		ShrubberyCreationForm(string src);
-		ShrubberyCreationForm(string name, string src);
+		ShrubberyCreationForm(string target);
+		ShrubberyCreationForm(string name, string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &src);
 		~ShrubberyCreationForm();
 

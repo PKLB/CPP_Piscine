@@ -6,11 +6,11 @@ Bureaucrat::Bureaucrat(): _name("PNJ"){
 	std::cout << "Bureaucrat " << this->_name << " has been created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(string src): _name(src){
+Bureaucrat::Bureaucrat(string name): _name(name){
 	std::cout << "Bureaucrat " << this->_name << " has been created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(string src, int grade): _name(src){
+Bureaucrat::Bureaucrat(string name, int grade): _name(name){
 	setGrade(grade);
 	std::cout << "Bureaucrat " << this->_name << " has been created" << std::endl;
 }

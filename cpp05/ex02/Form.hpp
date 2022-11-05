@@ -8,11 +8,11 @@ class	Form
 {
 	public:
 		Form();
-		Form(string src);
-		Form(string target, string src);
+		Form(string target);
+		Form(string target, string name);
 		Form(int isSigned, int execGrade, int signGrade);
-		Form(string str, int isSigned, int execGrade, int signGrade);
-		Form(string target, string str, int isSigned, int execGrade, int signGrade);
+		Form(string target, int isSigned, int execGrade, int signGrade);
+		Form(string target, string name, int isSigned, int execGrade, int signGrade);
 		Form(const Form &src);
 		virtual ~Form();
 

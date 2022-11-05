@@ -6,8 +6,8 @@ class	RobotomyRequestForm : public Form
 {
 	public:
 		RobotomyRequestForm();
-		RobotomyRequestForm(string src);
-		RobotomyRequestForm(string name, string src);
+		RobotomyRequestForm(string target);
+		RobotomyRequestForm(string name, string target);
 		RobotomyRequestForm(const RobotomyRequestForm &src);
 		~RobotomyRequestForm();
 

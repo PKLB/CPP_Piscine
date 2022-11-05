@@ -9,8 +9,8 @@ class	Bureaucrat
 {
 	public:
 		Bureaucrat();
-		Bureaucrat(string src);
-		Bureaucrat(string src, int grade);
+		Bureaucrat(string name);
+		Bureaucrat(string name, int grade);
 		Bureaucrat(const Bureaucrat &src);
 		~Bureaucrat();
 
