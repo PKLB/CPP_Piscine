@@ -76,6 +76,7 @@ void	Bureaucrat::downGrade(){
 		std::cout << str.what() << std::endl;
 	}
 }
+
 void	Bureaucrat::signForm(Form & src){
 	try
 	{
@@ -88,4 +89,8 @@ void	Bureaucrat::signForm(Form & src){
 	{
 		std::cout << this->_name << " couldn't sign " << src.getName() << " because " <<  str.what() << "\n";;
 	}
+}
+
+void	Bureaucrat::executeForm(const Form &src){
+	src.execute(getGrade(), getName());
 }

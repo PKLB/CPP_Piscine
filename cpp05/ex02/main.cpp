@@ -11,11 +11,11 @@ int main()
 	// std::cout << dossier;
 	Bureaucrat Robert("Robert", 150);
 
-	dossier.execute(Robert);
+	Robert.executeForm(dossier);
 	Robert.signForm(dossier);
 	Robert.setGrade(4);
 	Robert.signForm(dossier);
-	dossier.execute(Robert);
+	Robert.executeForm(dossier);
 	std::cout << dossier;
 	return 0;
 }

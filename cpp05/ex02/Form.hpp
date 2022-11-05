@@ -27,6 +27,7 @@ class	Form
 		void 			setSignGrade(int src);
 		void 			makeItSigned();
 		virtual void 	execute(const Bureaucrat &executor) const = 0;
+		virtual void 	execute(int grade, string name) const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
