@@ -75,3 +75,7 @@ void Form::setSignGrade(int src)
 {
 	this->_signGrade = src;
 }
+
+void Form::makeItSigned(){
+	this->_isSigned = 1;
+}

@@ -1,4 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm(): Form(0, 145, 137)
 {
@@ -34,7 +35,13 @@ void 	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		if (executor.getGrade() > this->getExecGrade())
 			throw(GradeTooLowException());
 		std::cout << executor.getName() << " executed " << getName() << std::endl;
-		std::cout << executor.getName() << " created " << getTarget() << std::endl;
+		string tmp = getTarget() + "_shrubbery";
+		std::ofstream MyFile(tmp);
+		MyFile << "   /\\       /\\      /\\       /\\ \n";
+		MyFile << "  /  \\     /  \\    /  \\     /  \\ \n";
+		MyFile << " /____\\   /____\\  /____\\   /____\\ \n";
+		MyFile << "   ||       ||      ||       ||     \n";
+		MyFile.close();
 	}
 	catch (const std::exception &str)
 	{

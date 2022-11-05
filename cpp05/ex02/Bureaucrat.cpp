@@ -76,15 +76,16 @@ void	Bureaucrat::downGrade(){
 		std::cout << str.what() << std::endl;
 	}
 }
-void	Bureaucrat::signForm(const Form & src){
+void	Bureaucrat::signForm(Form & src){
 	try
 	{
 		if (getGrade() > src.getSignGrade())
 			throw Bureaucrat::GradeTooLowException();
-		std::cout << this->_name << " signed " << src << "\n";
+		std::cout << this->_name << " signed " << src.getName() << "\n";
+		src.makeItSigned();
 	}
 	catch (const std::exception &str)
 	{
-		std::cout << this->_name << " couldn't sign " << src << " because " <<  str.what();
+		std::cout << this->_name << " couldn't sign " << src.getName() << " because " <<  str.what() << "\n";;
 	}
 }
