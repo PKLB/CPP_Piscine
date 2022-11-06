@@ -44,16 +44,16 @@ void Harl::complain(string level)
 	switch (blabla)
 	{
 		case 1:
-			std::cout << "[ DEBUG ]\n";
+			std::cout << "\033[1;36m[ DEBUG ]\033[0m\n";
 			warning();
 		case 2:
-			std::cout << "[ INFO ]\n";
+			std::cout << "\033[1;32m[ INFO ]\033[0m\n";
 			info();
 		case 3:
-			std::cout << "[ WARNING ]\n";
+			std::cout << "\033[1;33m[ WARNING ]\033[0m\n";
 			error();
 		case 4:
-			std::cout << "[ ERROR ]\n";
+			std::cout << "\033[1;31m[ ERROR ]\033[0m\n";
 			return debug();
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]\n";

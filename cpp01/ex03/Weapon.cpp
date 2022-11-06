@@ -19,5 +19,4 @@ Weapon::Weapon(string str){
 }
 
 Weapon::~Weapon(){
-
 }
