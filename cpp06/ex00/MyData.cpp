@@ -1,6 +1,7 @@
 #include "MyData.hpp"
-using std::string;
 #include <sstream>
+#include <cstdlib> 
+using std::string;
 
 MyData::MyData(): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
 	//std::cout << "MyData constructor called !\n";
@@ -13,6 +14,7 @@ MyData::MyData(string src): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
 	setInt(src);
 	setFloat(src);
 	setChar(src);
+	setDouble(src);
 }
 
 MyData::~MyData(){
@@ -65,16 +67,18 @@ void	MyData::setInt(string src){
 		std::cout << "Int: " << "impossible" << std::endl;
 		return ;
 	}
-	//result = static_cast<int>(stringo);
 	stringo >> result;
 	this->_MyInt = result;
 	std::cout << "Int: " << result << std::endl;
 }
 
 void	MyData::setFloat(string src){
+	double tempResult;
 	float result;
+	char *tempStr = const_cast<char*>(src.c_str());
 	try{
-		result = stof(src); // this wont be accepted i guess, I must find smth else
+		tempResult = std::atof(tempStr);
+		result = static_cast<float>(tempResult);
 	}
 	catch(std::invalid_argument& e){
 		std::cout << "Float: " << "impossible" << std::endl;
@@ -88,6 +92,26 @@ void	MyData::setFloat(string src){
 	}
 	this->_MyFloat = result;
 	std::cout << "Float: " << std::showpoint  << result << "f" << std::endl;
+}
+
+void	MyData::setDouble(string src){
+	double result;
+	char *tempStr = const_cast<char*>(src.c_str());
+	try{
+		result = std::atof(tempStr);
+	}
+	catch(std::invalid_argument& e){
+		std::cout << "Float: " << "impossible" << std::endl;
+		return ;
+	}
+	if (src == "nan" | src == "+nan" | src == "-nan"
+		| src == "+nanf" | src == "-nanf" | src == "nanf")
+	{
+		std::cout << "Double: " << "nan" << std::endl;
+		return ;
+	}
+	this->_MyDouble = result;
+	std::cout << "Double: " << std::showpoint << std::fixed << std::setprecision(2) << result << std::endl;
 }
 
 void	MyData::setChar(string src){
