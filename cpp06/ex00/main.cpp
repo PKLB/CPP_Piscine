@@ -5,10 +5,10 @@
 int main (int argc, char **argv)
 {
 	(void)argc;
-	MyData toto;
 	if (argc == 2){
-		std::cout << toto;
 		string src = argv[1];
+		MyData toto(src);
+		//std::cout << toto;
 	}
 	return 0;
 }
