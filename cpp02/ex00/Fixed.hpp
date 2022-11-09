@@ -6,11 +6,13 @@ class	Fixed
 {
 	public:
 		Fixed();
+		~Fixed();
+
 		Fixed(Fixed const &);
 		Fixed &operator=(const Fixed&);
+		
 		int getRawBits() const;
 		void setRawBits(int value);
-		~Fixed();
 	private:
 		int	number;
 		static const int bitNumber = 8;
