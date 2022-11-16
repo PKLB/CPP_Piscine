@@ -3,12 +3,19 @@
 #include <cstdlib> 
 using std::string;
 
+int	isDigit(char c)
+{
+	if (c >= 48 && c <= 57)
+		return 1;
+	return 0;
+}
+
 MyData::MyData(): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
-	//std::cout << "MyData constructor called !\n";
+	std::cout << "MyData constructor called !\n";
 }
 
 MyData::MyData(string src): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
-	//std::cout << "MyData constructor called !\n";
+	std::cout << "MyData constructor called !\n";
 	if (src.length() < 1)
 		std::cout << "Empty argument.\n";
 	setInt(src);
@@ -18,11 +25,11 @@ MyData::MyData(string src): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
 }
 
 MyData::~MyData(){
-	//std::cout << "MyData destructor called !\n";
+	std::cout << "MyData destructor called !\n";
 }
 
 MyData::MyData(const MyData& src){
-	//std::cout << "MyData copy constructor called !\n";
+	std::cout << "MyData copy constructor called !\n";
 }		
 
 MyData &MyData::operator=(const MyData& src){
@@ -61,6 +68,12 @@ void	MyData::setInt(string src){
 	std::istringstream stringo(src);
 	int result;
 
+	if (src.length() == 1 && isDigit(src[0]) == 0)
+	{
+		this->_MyInt = (int)src[0];
+		std::cout << "Int: " << this->_MyInt << std::endl;
+		return ;
+	}
 	if (src == "nan" | src == "+nan" | src == "-nan"
 		| src == "+nanf" | src == "-nanf" | src == "nanf")
 	{
@@ -75,7 +88,13 @@ void	MyData::setInt(string src){
 void	MyData::setFloat(string src){
 	double tempResult;
 	float result;
-	char *tempStr = const_cast<char*>(src.c_str());
+	if (src.length() == 1 && isDigit(src[0]) == 0)
+	{
+		this->_MyFloat = (float)src[0];
+		std::cout << "Float: " << std::showpoint  << this->_MyFloat << "f" << std::endl;
+		return ;
+	}
+	char *tempStr = const_cast<char*>(src.c_str()); // retirer const cast
 	try{
 		tempResult = std::atof(tempStr);
 		result = static_cast<float>(tempResult);
@@ -96,7 +115,13 @@ void	MyData::setFloat(string src){
 
 void	MyData::setDouble(string src){
 	double result;
-	char *tempStr = const_cast<char*>(src.c_str());
+	char *tempStr = const_cast<char*>(src.c_str());// retirer const cast
+	if (src.length() == 1 && isDigit(src[0]) == 0)
+	{
+		this->_MyDouble = (double)src[0];
+		std::cout << "Double: " << std::showpoint << std::fixed << std::setprecision(1) << this->_MyDouble << std::endl;
+		return ;
+	}
 	try{
 		result = std::atof(tempStr);
 	}
@@ -111,14 +136,14 @@ void	MyData::setDouble(string src){
 		return ;
 	}
 	this->_MyDouble = result;
-	std::cout << "Double: " << std::showpoint << std::fixed << std::setprecision(2) << result << std::endl;
+	std::cout << "Double: " << std::showpoint << std::fixed << std::setprecision(1) << result << std::endl;
 }
 
 void	MyData::setChar(string src){
 	char result;
 
 	result = getInt();
-	if (src.length() == 1 && src[0] != '0')
+	if ((src.length() == 1 && src[0] != '0') || (src.length() == 1 && isDigit(src[0]) == 1))
 		result = src[0];
 	if (src == "nan" | src == "+nan" | src == "-nan"
 		| src == "+nanf" | src == "-nanf" | src == "nanf")
@@ -131,5 +156,6 @@ void	MyData::setChar(string src){
 		std::cout << "Char: " << "non displayable" << std::endl;
 		return ;
 	}
+	this->_MyChar = result;
 	std::cout << "Char: '" << result << "'\n";
 }
