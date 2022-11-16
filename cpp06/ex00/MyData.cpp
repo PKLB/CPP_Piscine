@@ -143,7 +143,7 @@ void	MyData::setChar(string src){
 	char result;
 
 	result = getInt();
-	if ((src.length() == 1 && src[0] != '0') || (src.length() == 1 && isDigit(src[0]) == 1))
+	if (src.length() == 1 && src[0] != '0')
 		result = src[0];
 	if (src == "nan" | src == "+nan" | src == "-nan"
 		| src == "+nanf" | src == "-nanf" | src == "nanf")
