@@ -35,26 +35,26 @@ void Harl::error(void)
 void Harl::complain(string level)
 {
 	enum level_int {DEBUG = 1, INFO, WARNING, ERROR};
-	int blabla = (level == "WARNING") ? WARNING : \
+	int blabla = (level == "DEBUG") ? DEBUG : \
 	(level == "INFO") ? INFO : \
+	(level == "WARNING") ? WARNING : \
 	(level == "ERROR") ? ERROR : \
-	(level == "DEBUG") ? DEBUG : \
 	10;
 
 	switch (blabla)
 	{
 		case 1:
 			std::cout << "\033[1;36m[ DEBUG ]\033[0m\n";
-			warning();
+			debug();
 		case 2:
 			std::cout << "\033[1;32m[ INFO ]\033[0m\n";
 			info();
 		case 3:
 			std::cout << "\033[1;33m[ WARNING ]\033[0m\n";
-			error();
+			warning();
 		case 4:
 			std::cout << "\033[1;31m[ ERROR ]\033[0m\n";
-			return debug();
+			return error();
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]\n";
 	}
