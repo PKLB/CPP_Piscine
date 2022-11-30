@@ -8,11 +8,11 @@ class	Fixed
 		Fixed();
 		~Fixed();
 
-		Fixed(Fixed const &);
+		Fixed(Fixed const &src);
 		Fixed &operator=(const Fixed&);
 		
 		int getRawBits() const;
-		void setRawBits(int value);
+		void setRawBits(int const raw);
 	private:
 		int	number;
 		static const int bitNumber = 8;
