@@ -37,7 +37,7 @@ Fixed::Fixed(const int src) : _number(src << _bitNumber)
 
 
 
-int 	Fixed::getRawBits(void)
+int 	Fixed::getRawBits(void) const
 {
 	return(this->_number);
 }
@@ -61,9 +61,9 @@ int		Fixed::toInt (void) const
 // A member function int toInt( void ) const;
 // that converts the fixed-point value to an integer value.
 
-std::ostream& operator<<(std::ostream& os, const Fixed& src)
+std::ostream &operator<<(std::ostream& os, const Fixed& src)
 {
-    os << src._number;
+    os << src.getRawBits();
     return os;
 }
 // An overload of the insertion («) operator that inserts a floating-point representation
