@@ -36,7 +36,7 @@ float 	Fixed::toFloat (void) const{
 }
 
 int		Fixed::toInt (void) const{
-	return (_number>> 8);
+	return (_number / 256);
 }
 
 std::ostream& operator<<(std::ostream& os, Fixed const& src){

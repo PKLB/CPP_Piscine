@@ -32,9 +32,11 @@ class	Fixed
 		bool operator!=(const Fixed&src);
 		bool operator==(const Fixed&src);
 
-		Fixed &min(const Fixed&src, const Fixed&src2);
-		Fixed &max(const Fixed&src, const Fixed&src2);
-		
+		static Fixed &min(const Fixed&src, const Fixed&src2);
+		static Fixed &max(const Fixed&src, const Fixed&src2);
+		static Fixed &min(Fixed&src, Fixed&src2);
+		static Fixed &max(Fixed&src, Fixed&src2);
+
 		int 	getRawBits(void) const;
 		void 	setRawBits(int const raw);
 

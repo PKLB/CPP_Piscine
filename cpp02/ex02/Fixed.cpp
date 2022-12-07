@@ -36,7 +36,7 @@ float 	Fixed::toFloat (void) const{
 }
 
 int		Fixed::toInt (void) const{
-	return (_number>> 8);
+	return (_number / 256);
 }
 
 std::ostream& operator<<(std::ostream& os, Fixed const& src){
@@ -153,14 +153,36 @@ bool Fixed::operator!=(const Fixed&src){
 	return false;
 }
 
-// Fixed &Fixed::min(const Fixed&src, const Fixed&src2){
-// 	if (src.getRawBits() < src2.getRawBits())
-// 		return (src);
-// 	return(&src2);
-// }
+Fixed &Fixed::min(const Fixed&src, const Fixed&src2){
+	static Fixed result;
+	if (src.getRawBits() < src2.getRawBits())
+	{
+		result = src;
+		return result;
+	}
+	result = src2;
+	return result;
+}
 
-// Fixed &Fixed::max(const Fixed&src, const Fixed&src2){
-// 	if (src.getRawBits() > src2.getRawBits())
-// 		return (src);
-// 	return(&src2);
-// } ->these are not working (yet !!)
+Fixed &Fixed::max(const Fixed&src, const Fixed&src2){
+	static Fixed result;
+	if (src.getRawBits() > src2.getRawBits())
+	{
+		result = src;
+		return result;
+	}
+	result = src2;
+	return result;
+}
+
+Fixed &Fixed::min(Fixed&src, Fixed&src2){
+	if (src.getRawBits() < src2.getRawBits())
+		return src;
+	return src2;
+}
+
+Fixed &Fixed::max(Fixed&src, Fixed&src2){
+	if (src.getRawBits() > src2.getRawBits())
+		return src;
+	return src2;
+}
