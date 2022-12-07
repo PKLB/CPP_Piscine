@@ -29,7 +29,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap& src)
 
 std::ostream& operator<<(std::ostream& os, const ClapTrap& src)
 {
-    os << "\033[1;36m[" << src._name << "] \033[1;32mHP[" << src._HitPoints << "] \033[1;33mENERGY[" << src._EnergyPoints << "] \033[1;34mATK[" << src._AttackDamage << "]\033[0m\n";
+    os << "\033[1;36m[" << src.getName() << "] \033[1;32mHP[" << src.getHitPoints() << "] \033[1;33mENERGY[" << src.getEnergyPoints() << "] \033[1;34mATK[" << src.getAttackDamage() << "]\033[0m\n";
     return os;
 }
 

@@ -8,9 +8,12 @@ int main(void)
 
 	std::cout << test;
 	test.attack("ennemy");
-	test.takeDamage(5);
+	test.takeDamage(test.getAttackDamage());
 	test.beRepaired(2);
-
 	std::cout << test;
+	// test.setAttackDamage(4);
+	// test.takeDamage(test.getAttackDamage());
+	// std::cout << test;
+
 	return 0;
 }
