@@ -2,18 +2,21 @@
 #include <iostream>
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat()
-{
+WrongCat::WrongCat(){
 	this->_type = "WrongCat";
 	std::cout << "WrongCat constructor called \n";	
 }
-                                                                                  
-WrongCat::~WrongCat()
-{
+
+WrongCat::~WrongCat(){
 	std::cout << "WrongCat destructor called \n";
 }
 
-void WrongCat::makeSound() const
-{
-	std::cout << "miou miou je suis le chat\n";
+WrongCat::WrongCat(const WrongCat &src){
+		*this = src;
+}
+
+WrongCat &WrongCat::operator=(const WrongCat& src){
+	std::cout << "Copy assignement operator called\n";
+	this->_type = src._type;
+	return *this;
 }

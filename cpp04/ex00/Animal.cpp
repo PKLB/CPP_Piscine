@@ -2,49 +2,41 @@
 #include <iostream>
 #include "Animal.hpp"
 
-Animal::Animal(): _type("Animal")
-{
+Animal::Animal(): _type("Animal"){
 	std::cout << "Animal constructor called \n";	
 }
 
-Animal::Animal(string src): _type(src)
-{
+Animal::Animal(string src): _type(src){
 	std::cout << "Animal constructor called \n";	
 }
                                                                                   
-Animal::~Animal()
-{
+Animal::~Animal(){
 	std::cout << "Animal destructor called \n";
 }
 
-Animal::Animal(const Animal &src)
-{
+Animal::Animal(const Animal &src){
+	*this = src;
 }
 
-Animal &Animal::operator=(const Animal& src)
-{
+Animal &Animal::operator=(const Animal& src){
 	std::cout << "Copy assignement operator called\n";
 	this->_type = src._type;
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream& os, const Animal& src)
-{
-    os << src._type << "\n";
+std::ostream& operator<<(std::ostream& os, const Animal& src){
+    os << src.getType() << "\n";
     return os;
 }
 
-string	Animal::getType() const
-{
+string	Animal::getType() const{
 	return(this->_type);
 }
 
-void	Animal::setType(string src)
-{
+void	Animal::setType(string src){
 	this->_type = src;
 }
 
-void Animal::makeSound() const
-{
+void Animal::makeSound() const{
 	std::cout << "kwak kwak\n";
 }
