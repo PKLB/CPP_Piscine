@@ -12,6 +12,11 @@ ClapTrap::ClapTrap(std::string name): _name(name), _HitPoints(10), _EnergyPoints
 	std::cout << "\033[1;32mConstructor called\033[0m\n";
 }
 
+ClapTrap::ClapTrap(ClapTrap const &src){
+	std::cout << "Copy constructor called\n";
+	*this = src;
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "\033[1;31mDestructor called\033[0m\n";

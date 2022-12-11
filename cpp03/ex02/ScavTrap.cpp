@@ -12,6 +12,21 @@ ScavTrap::~ScavTrap()
 	std::cout << "\033[1;31mScavTrap destructor called\033[0m\n";
 }
 
+ScavTrap::ScavTrap(ScavTrap const &src){
+	std::cout << "Copy constructor called\n";
+	*this = src;
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap& src)
+{
+	std::cout << "Copy assignement operator called\n";
+	this->_name = src._name;
+	setHitPoints(src._HitPoints);
+	setEnergyPoints(src._EnergyPoints);
+	setAttackDamage(src._AttackDamage);
+	return *this;
+}
+
 void ScavTrap::attack(const std::string& target)
 {
 	if (this->_EnergyPoints > 0 && this->_HitPoints > 0)

@@ -9,7 +9,10 @@ class	FragTrap : public ClapTrap
 {
 	public:
 		FragTrap();
+		FragTrap(FragTrap const &src);
 		~FragTrap();
+		FragTrap &operator=(const FragTrap& src);
+
 		void highFivesGuys(void);
 };
 

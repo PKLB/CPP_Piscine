@@ -2,12 +2,17 @@
 #include <string>
 #include <iostream>
 
-ClapTrap::ClapTrap(): _name("Default name"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
+ClapTrap::ClapTrap(): _name("Default name"), _HitPoints(100), _EnergyPoints(50), _AttackDamage(20)
 {
 	std::cout << "\033[1;32mDefault constructor called\033[0m\n";
 }
 
-ClapTrap::ClapTrap(std::string name): _name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
+ClapTrap::ClapTrap(ClapTrap const &src){
+	std::cout << "Copy constructor called\n";
+	*this = src;
+}
+
+ClapTrap::ClapTrap(std::string name): _name(name), _HitPoints(100), _EnergyPoints(50), _AttackDamage(20)
 {
 	std::cout << "\033[1;32mConstructor called\033[0m\n";
 }
@@ -91,19 +96,22 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_EnergyPoints > 0 && this->_HitPoints > 0)
 	{
-		if (_HitPoints + amount > 10)
+		if (_HitPoints + amount >= 10)
 		{
 			_HitPoints = 10;
-			std::cout << "Claptrap " << _name << " is now full life!\n";
+			std::cout << "Claptrap " << _name << " is full life!\n";
 		}
 		else if (amount <= 0)
 			std::cout << "You cannot repair with this value !\n";
 		else
 		{
 			_HitPoints += amount;
+			if (_HitPoints > 10)
+				_HitPoints = 10;
 			std::cout << "Claptrap " << _name << " gained " << amount << " point(s) of life !\n";
 		}
 		this->_EnergyPoints--;
 	}
-	std::cout << "Reparation failed\n";
+	else
+		std::cout << "Reparation failed\n";
 }
