@@ -2,19 +2,19 @@
 #include <stdlib.h>
 #include <time.h>
 
-RobotomyRequestForm::RobotomyRequestForm(): Form(0, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(): AForm(0, 45, 72){
 	std::cout << "RobotomyRequestForm has been created" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(string target): Form(target, 0, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(string target): AForm(target, 0, 45, 72){
 	std::cout << "RobotomyRequestForm has been created" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(string name, string target): Form(name, target, 0, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(string name, string target): AForm(name, target, 0, 45, 72){
 	std::cout << "RobotomyRequestForm has been created" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src):  Form(src.getName(), 0, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src):  AForm(src.getName(), 0, 45, 72){
 	std::cout << "RobotomyRequestForm has been created" << std::endl;
 }
 
@@ -23,10 +23,9 @@ RobotomyRequestForm::~RobotomyRequestForm(){
 }
 
 void 	RobotomyRequestForm::execute(Bureaucrat const & executor) const{
-	try
-	{
+	try{
 		if (getSigned() == 0)
-			throw(GradeTooLowException());
+			throw(NotSignedException());
 		if (executor.getGrade() > this->getExecGrade())
 			throw(GradeTooLowException());
 		std::cout << executor.getName() << " executed " << getName() << std::endl;
@@ -38,20 +37,18 @@ void 	RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 		else
 			std::cout << getTarget() << " has not been robotomized !\n";
 	}
-	catch (const std::exception &str)
-	{
+	catch (const std::exception &str){
 		std::cout << str.what() << std::endl;
 	}
 }
 
 void 	RobotomyRequestForm::execute(int grade, string name) const{
-	try
-	{
+	try{
 		if (getSigned() == 0)
-			throw(GradeTooLowException());
+			throw(NotSignedException());
 		if (grade > this->getExecGrade())
 			throw(GradeTooLowException());
-		std::cout << name << " executed " << getName() << std::endl;
+		std::cout << "\033[1;36m" << name << " executed " << getName() << "\033[0m" << std::endl;
 		std::cout <<  "BrrzzrRZrzrRZzRZRrzrz.........!!\n";
 		srand (time(NULL));
 		int nb = rand() % 10 + 1;
@@ -60,18 +57,17 @@ void 	RobotomyRequestForm::execute(int grade, string name) const{
 		else
 			std::cout << getTarget() << " has not been robotomized !\n";
 	}
-	catch (const std::exception &str)
-	{
+	catch (const std::exception &str){
 		std::cout << str.what() << std::endl;
 	}
 }
 
 std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& src){
 	if (src.getSigned() == 0)
-		os << src.getName() << " RobotomyRequestForm isn't signed. You must have a grade of " << src.getSignGrade() 
-			<< " to sign the form and a grade of " << src.getExecGrade() << " to execute the form" << std::endl;
+		os << "\033[1;34m- " << src.getName() << " RobotomyRequestForm isn't signed. You must have a grade of " << src.getSignGrade() 
+			<< " to sign the form and a grade of " << src.getExecGrade() << " to execute the form" << " -\033[0m" << std::endl;
 	else
-		os << src.getName() << " RobotomyRequestForm is signed. You must have a grade of " << src.getSignGrade() 
-			<< " to sign the form and a grade of " << src.getExecGrade() << " to execute the form" << std::endl;
+		os << "\033[1;34m- " << src.getName() << " RobotomyRequestForm is signed. You must have a grade of " << src.getSignGrade() 
+			<< " to sign the form and a grade of " << src.getExecGrade() << " to execute the form" << " -\033[0m" << std::endl;
     return os;
 }

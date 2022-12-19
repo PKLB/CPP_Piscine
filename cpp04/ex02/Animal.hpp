@@ -14,6 +14,7 @@ class Animal
 
 		string getType() const;
 		void setType(string src);
+		virtual Brain *getBrain() const;
 				
 		Animal &operator=(const Animal& src);
 

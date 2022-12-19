@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <exception>
 using std::string;
 
 class	Bureaucrat
@@ -17,26 +18,26 @@ class	Bureaucrat
 		int 	getGrade() const;
 		string 	getName() const;
 		void 	setGrade(int src);
-		void	signForm(string src, int success) const;
 		void	upGrade();
 		void	downGrade();
+		void	signForm(string src, int success) const;
 
 		class GradeTooHighException : public std::exception
 		{
 			virtual const char* what() const throw(){
-				return("Grade too high !");
+				return("\033[1;31m[Grade too high !]\033[0m");
 			}
 		};
 		class GradeTooLowException : public std::exception
 		{
 			virtual const char* what() const throw(){
-				return("Grade too low !");
+				return("\033[1;31m[Grade too low !]\033[0m");
 			}
 		};
 
 	private:
-		int _grade;
-		const string _name;
+		int 			_grade;
+		const string	_name;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& src);

@@ -10,7 +10,9 @@ class Brain
 		Brain();
 		Brain(const Brain &src);
 		virtual ~Brain();
-				
+		
+		string printIdeas(int i) const;
+		void	changeIdeas();				
 		Brain &operator=(const Brain& src);
 	private:
 		std::string _Ideas[100];

@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 using std::string;
 
 class Form;
@@ -19,10 +19,11 @@ class	Bureaucrat
 		int 	getGrade() const;
 		string 	getName() const;
 		void 	setGrade(int src);
-		void	signForm(Form& src);
+		void	signForm(AForm& src);
 		void	upGrade();
 		void	downGrade();
-		void	executeForm(const Form &src);
+		void	signForm(string src, int success) const;
+		void	executeForm(const AForm &src);
 
 		class GradeTooHighException : public std::exception{
 			virtual const char* what() const throw(){

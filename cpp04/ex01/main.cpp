@@ -13,6 +13,9 @@ int	main ()
 		tab[i] = new Cat();
 	tab[1]->makeSound();
 	tab[3]->makeSound();
+	std::cout << tab[3]->getBrain()->printIdeas(50) << std::endl;
+	tab[3]->getBrain()->changeIdeas();
+	std::cout << tab[3]->getBrain()->printIdeas(50) << std::endl;
 	for (int i = 0; i < 4; i++)
 		delete tab[i];
 	return (0);

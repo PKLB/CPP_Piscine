@@ -4,7 +4,7 @@ RM=rm -f
 NAME=a.out
 SRCS= 	main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp \
+		AForm.cpp \
 		ShrubberyCreationForm.cpp \
 		RobotomyRequestForm.cpp \
 		PresidentialPardonForm.cpp \
@@ -15,6 +15,9 @@ all:    ${NAME}
 
 ${NAME}:        ${OBJS}
 		${CC} ${CFLAGS} -o ${NAME} ${OBJS}
+
+.cpp.o:
+		${CC} ${CFLAGS} -c $< -o $@
 
 clean:
 		@${RM} ${OBJS}

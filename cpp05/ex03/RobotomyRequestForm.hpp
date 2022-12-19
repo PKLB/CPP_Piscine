@@ -1,8 +1,8 @@
 #pragma once
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class	RobotomyRequestForm : public Form
+class	RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm();

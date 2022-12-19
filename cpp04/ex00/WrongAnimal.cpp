@@ -15,7 +15,7 @@ WrongAnimal::~WrongAnimal(){
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &src){
-		*this = src;
+	*this = src;
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal& src){

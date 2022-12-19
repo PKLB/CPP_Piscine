@@ -2,7 +2,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 using std::string;
 
 Intern::Intern(){
@@ -10,6 +10,7 @@ Intern::Intern(){
 }
 
 Intern::Intern(const Intern &src){
+	*this = src;
 	std::cout << "Intern has been created" << std::endl;
 }
 
@@ -17,11 +18,13 @@ Intern::~Intern(){
 	std::cout << "Intern has been destroyed" << std::endl;
 }
 
-Intern &Intern::operator=(const Intern& src){
+Intern &Intern::operator=(const Intern&)
+{
+
 	return *this;
 }
 
-Form	*Intern::makeForm(string formName, string targetForm){
+AForm	*Intern::makeForm(string formName, string targetForm){
 	string tab[3]= {"robotomy request", "shrubbery creation", "presidential pardon"};
 	int result = 0;
 	for (int i = 0; i < 3; i++)

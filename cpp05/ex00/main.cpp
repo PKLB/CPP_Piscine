@@ -4,11 +4,12 @@
 
 int main()
 {
-	Bureaucrat toto("yoyo", 150);
+	Bureaucrat toto("LowLvlBureaucrat", 160);
 	std::cout << toto;
+	toto.upGrade();
+	toto.upGrade();
 	toto.downGrade();
-	toto.upGrade();
-	toto.upGrade();
+	toto.downGrade();
 	toto.downGrade();
 	std::cout << toto;
 

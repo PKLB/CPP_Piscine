@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 using std::string;
 
-class Form;
+class AForm;
 
 class	Intern
 {
@@ -14,7 +14,7 @@ class	Intern
 
 		Intern &operator=(const Intern& src);
 
-		Form	*makeForm(string formName, string targetForm);
+		AForm	*makeForm(string formName, string targetForm);
 
 		class WrongName : public std::exception{
 			virtual const char* what() const throw(){

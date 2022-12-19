@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 using std::string;
 
-class Form;
+class AForm;
 
 class	Bureaucrat
 {
@@ -19,25 +19,26 @@ class	Bureaucrat
 		int 	getGrade() const;
 		string 	getName() const;
 		void 	setGrade(int src);
-		void	signForm(Form& src);
+		void	signForm(AForm& src);
 		void	upGrade();
 		void	downGrade();
-		void	executeForm(const Form &src);
+		void	signForm(string src, int success) const;
+		void	executeForm(const AForm &src);
 
 		class GradeTooHighException : public std::exception{
 			virtual const char* what() const throw(){
-				return("Grade too high !");
+				return("\033[1;31m[Grade too high !]\033[0m");
 			}
 		};
 		class GradeTooLowException : public std::exception{
 			virtual const char* what() const throw(){
-				return("Grade too low !");
+				return("\033[1;31m[Grade too low !]\033[0m");
 			}
 		};
 	
 	private:
-		int _grade;
-		const string _name;
+		int 			_grade;
+		const string 	_name;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& src);

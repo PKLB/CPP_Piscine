@@ -12,7 +12,8 @@ Cat::~Cat(){
 }
 
 Cat::Cat(const Cat &src){
-	*this = src;
+	this->_type = src._type;
+	std::cout << "Cat copy constructor called \n";
 }
 
 Cat &Cat::operator=(const Cat& src){

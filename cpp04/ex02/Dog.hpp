@@ -11,6 +11,7 @@ class Dog : public Animal
 		~Dog();
 
 		Dog &operator=(const Dog& src);
+		Brain *getBrain() const;
 
 		void makeSound() const;
 	private:
