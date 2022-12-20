@@ -96,7 +96,7 @@ void	Bureaucrat::downGrade()
 void Bureaucrat::signForm(string src, int success) const
 {
 	if (success == 0)
-		std::cout << this->_name << " signed [" << src << "]" << std::endl;
+		std::cout << "\033[1;32m" << this->_name << " signed [" << src << "]" << "\033[0m" << std::endl;
 	if (success == 1)
-		std::cout << this->_name << " couldn't sign [" << src << "]" << " because his grade is too low !" << std::endl;
+		std::cout << "\033[1;31m /!\\" << this->_name << " couldn't sign [" << src << "]" << " because his grade is too low" << "/!\\\033[0m" << std::endl;
 }

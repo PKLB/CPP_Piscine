@@ -4,7 +4,7 @@ Data::Data(){
 	std::cout << "Data constructor called !\n";
 }
 
-Data::Data(const Data& src){
+Data::Data(const Data& src): _intData(src._intData), _stringData(src._stringData) {
 	std::cout << "Data copy constructor called !\n";
 }
 

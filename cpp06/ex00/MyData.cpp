@@ -14,9 +14,9 @@ MyData::MyData(): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
 	std::cout << "MyData constructor called !\n";
 }
 
-MyData::MyData(string src): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
+MyData::MyData(char *src): _MyInt(0), _MyDouble(0.0), _MyFloat(0.0f){
 	std::cout << "MyData constructor called !\n";
-	if (src.length() < 1)
+	if (strlen(src) < 1)
 		std::cout << "Empty argument.\n";
 	setInt(src);
 	setFloat(src);
@@ -28,7 +28,7 @@ MyData::~MyData(){
 	std::cout << "MyData destructor called !\n";
 }
 
-MyData::MyData(const MyData& src){
+MyData::MyData(const MyData& src):_MyInt(src._MyInt),_MyDouble(src._MyDouble),_MyFloat(src._MyFloat),_MyChar(src._MyChar) {
 	std::cout << "MyData copy constructor called !\n";
 }		
 
@@ -85,16 +85,16 @@ void	MyData::setInt(string src){
 	std::cout << "Int: " << result << std::endl;
 }
 
-void	MyData::setFloat(string src){
+void	MyData::setFloat(char *src){
 	double tempResult;
 	float result;
-	if (src.length() == 1 && isDigit(src[0]) == 0)
+	if (strlen(src) == 1 && isDigit(src[0]) == 0)
 	{
 		this->_MyFloat = (float)src[0];
-		std::cout << "Float: " << std::showpoint  << this->_MyFloat << "f" << std::endl;
+		std::cout << "Float: "  << std::showpoint << std::fixed << std::setprecision(1) << this->_MyFloat << "f" << std::endl;
 		return ;
 	}
-	char *tempStr = const_cast<char*>(src.c_str()); // retirer const cast
+	char *tempStr = src;
 	try{
 		tempResult = std::atof(tempStr);
 		result = static_cast<float>(tempResult);
@@ -103,20 +103,20 @@ void	MyData::setFloat(string src){
 		std::cout << "Float: " << "impossible" << std::endl;
 		return ;
 	}
-	if (src == "nan" | src == "+nan" | src == "-nan"
-		| src == "+nanf" | src == "-nanf" | src == "nanf")
+	if (strcmp(src,"nan") == 0 || strcmp(src,"+nan") == 0 || strcmp(src,"-nan") == 0
+		|| strcmp(src, "+nanf") == 0 || strcmp(src,"-nanf") == 0 || strcmp(src,"nanf") == 0)
 	{
 		std::cout << "Float: " << "nanf" << std::endl;
 		return ;
 	}
 	this->_MyFloat = result;
-	std::cout << "Float: " << std::showpoint  << result << "f" << std::endl;
+	std::cout<< "Float: "  << std::showpoint << std::fixed << std::setprecision(1) << this->_MyFloat << "f" << std::endl;
 }
 
-void	MyData::setDouble(string src){
+void	MyData::setDouble(char *src){
 	double result;
-	char *tempStr = const_cast<char*>(src.c_str());// retirer const cast
-	if (src.length() == 1 && isDigit(src[0]) == 0)
+	char *tempStr = src;
+	if (strlen(src) == 1 && isDigit(src[0]) == 0)
 	{
 		this->_MyDouble = (double)src[0];
 		std::cout << "Double: " << std::showpoint << std::fixed << std::setprecision(1) << this->_MyDouble << std::endl;
@@ -129,8 +129,8 @@ void	MyData::setDouble(string src){
 		std::cout << "Float: " << "impossible" << std::endl;
 		return ;
 	}
-	if (src == "nan" | src == "+nan" | src == "-nan"
-		| src == "+nanf" | src == "-nanf" | src == "nanf")
+	if (strcmp(src,"nan") == 0 || strcmp(src,"+nan") == 0 || strcmp(src,"-nan") == 0
+		|| strcmp(src, "+nanf") == 0 || strcmp(src,"-nanf") == 0 || strcmp(src,"nanf") == 0)
 	{
 		std::cout << "Double: " << "nan" << std::endl;
 		return ;
@@ -143,6 +143,11 @@ void	MyData::setChar(string src){
 	char result;
 
 	result = getInt();
+	if (result < 0 || result > 125)
+	{
+		std::cout << "Char: " << "non displayable" << std::endl;
+		return ;
+	}
 	if (src.length() == 1 && src[0] != '0')
 		result = src[0];
 	if (src == "nan" | src == "+nan" | src == "-nan"
@@ -151,7 +156,7 @@ void	MyData::setChar(string src){
 		std::cout << "Char: " << "impossible" << std::endl;
 		return ;
 	}
-	else if (result <= 32 | result > 125)
+	else if (result <= 32 || result > 125)
 	{
 		std::cout << "Char: " << "non displayable" << std::endl;
 		return ;

@@ -14,8 +14,6 @@ class	Form
 		int 	getExecGrade() const;
 		int 	getSignGrade() const;
 		int 	getSigned() const;
-		void 	setExecGrade(int src);
-		void 	setSignGrade(int src);
 		void	beSigned(const Bureaucrat& src);
 
 		class GradeTooHighException : public std::exception
@@ -33,8 +31,8 @@ class	Form
 
 	private:
 		bool			_isSigned;
-		int				_execGrade;
-		int				_signGrade;
+		const int		_execGrade;
+		const int		_signGrade;
 		const 	string 	_name;
 };
 

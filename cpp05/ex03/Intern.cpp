@@ -18,9 +18,7 @@ Intern::~Intern(){
 	std::cout << "Intern has been destroyed" << std::endl;
 }
 
-Intern &Intern::operator=(const Intern&)
-{
-
+Intern &Intern::operator=(const Intern&){
 	return *this;
 }
 
@@ -37,22 +35,21 @@ AForm	*Intern::makeForm(string formName, string targetForm){
 				case 1:
 				{
 					std::cout << "Intern creates " << formName << std::endl;
-					return (new RobotomyRequestForm(targetForm));
+					return (new RobotomyRequestForm(formName, targetForm));
 				}
 				case 2:
 				{
 					std::cout << "Intern creates " << formName << std::endl;
-					return (new ShrubberyCreationForm(targetForm));
+					return (new ShrubberyCreationForm(formName, targetForm));
 				}
 				case 3:
 				{
 					std::cout << "Intern creates " << formName << std::endl;
-					return (new PresidentialPardonForm(targetForm));
+					return (new PresidentialPardonForm(formName, targetForm));
 				}
 			}
 		}
 	}
 	std::cout << "The intern couldn't the form you asked for, he created a PresidentialPardonForm hoping it was the form you asked for.\n";
-	return (new PresidentialPardonForm(targetForm));
+	return (new PresidentialPardonForm(formName, targetForm));
 }
-

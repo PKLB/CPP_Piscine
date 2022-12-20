@@ -12,13 +12,10 @@ int main()
 	Bureaucrat Albert("Albert", 8);
 	std::cout << Roger;
 	std::cout << Albert;
-	dossier.setSignGrade(10);
-	dossier.setExecGrade(50);
 	dossier.beSigned(Roger);
 	dossier.beSigned(Albert);
 	Roger.upGrade();
 	Roger.upGrade();
-	dossier.setSignGrade(75);
 	dossier.beSigned(Roger);
 	std::cout << dossier;
 

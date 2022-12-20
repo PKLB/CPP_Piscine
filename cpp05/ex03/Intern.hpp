@@ -18,7 +18,7 @@ class	Intern
 
 		class WrongName : public std::exception{
 			virtual const char* what() const throw(){
-				return("This form does not exist !");
+				return("[This form does not exist !]");
 			}
 		};
 };

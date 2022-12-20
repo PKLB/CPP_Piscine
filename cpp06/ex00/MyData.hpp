@@ -8,7 +8,7 @@ using std::string;
 class	MyData{
 	public:
 		MyData();
-		MyData(string src);
+		MyData(char *src);
 		MyData(const MyData& src);
 		~MyData();
 		MyData &operator=(const MyData& src);
@@ -19,8 +19,8 @@ class	MyData{
 		char	getChar() const;
 		
 		void	setInt(string src);
-		void	setDouble(string src);
-		void	setFloat(string src);
+		void	setDouble(char *src);
+		void	setFloat(char *src);
 		void	setChar(string src);
 
 	private:

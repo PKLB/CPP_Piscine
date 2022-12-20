@@ -8,7 +8,6 @@ class	AForm
 {
 	public:
 		AForm();
-		AForm(string target);
 		AForm(string target, string name);
 		AForm(int isSigned, int execGrade, int signGrade);
 		AForm(string target, int isSigned, int execGrade, int signGrade);
@@ -23,8 +22,6 @@ class	AForm
 		int 			getExecGrade() const;
 		int 			getSignGrade() const;
 		int 			getSigned() const;
-		void 			setExecGrade(int src);
-		void 			setSignGrade(int src);
 		void 			makeItSigned();
 		void			beSigned(const Bureaucrat& src);
 		virtual void 	execute(const Bureaucrat &executor) const = 0;
@@ -51,8 +48,8 @@ class	AForm
 
 	private:
 		bool			_isSigned;
-		int				_execGrade;
-		int				_signGrade;
+		const int		_execGrade;
+		const int		_signGrade;
 		const 	string 	_name;
 		const 	string 	_target;
 };

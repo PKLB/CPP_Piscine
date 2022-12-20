@@ -105,6 +105,6 @@ void Bureaucrat::signForm(string src, int success) const
 		std::cout << "\033[1;31m /!\\" << this->_name << " couldn't sign [" << src << "]" << " because his grade is too low" << "/!\\\033[0m" << std::endl;
 }
 
-void	Bureaucrat::executeForm(const AForm &src){
+void	Bureaucrat::executeForm(AForm const &src){
 	src.execute(getGrade(), getName());
 }
