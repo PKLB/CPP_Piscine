@@ -3,7 +3,6 @@ CFLAGS= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 RM=rm -f
 NAME=a.out
 SRCS= 	main.cpp \
-		Array.cpp \
 
 OBJS=${SRCS:.cpp=.o}
 
