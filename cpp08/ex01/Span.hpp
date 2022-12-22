@@ -12,7 +12,7 @@ class Span{
 		~Span();
 
 		void	addNumber(int nb);
-		void	addNumbers(int nb, int nbOfNbs);
+		void	addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		int		shortestSpan();
 		int		longestSpan();
 	private:

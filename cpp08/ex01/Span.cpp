@@ -24,13 +24,14 @@ void	Span::addNumber(int nb){
 	this->_numbers.push_back(nb);
 }
 
-void	Span::addNumbers(int nb, int nbOfNbs){
-	for (int i = 0; i < nbOfNbs; i++)
-	{
-		this->_numbers.push_back(nb), this->_currentN++;
-		if (this->_currentN == this->_N)
-			throw(std::exception());
+void	Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
+	while (begin != end){
+		this->_numbers.push_back(*begin);
+		std::cout << *begin << std::endl;
+		++begin;
 	}
+	if (this->_currentN++ == this->_N)
+		throw(std::exception());
 }
 
 int		Span::shortestSpan(){
