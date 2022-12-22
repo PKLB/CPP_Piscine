@@ -1,21 +1,23 @@
 #include "Span.hpp"
 #include <cstdlib>
 
-Span::Span(unsigned int N): _N(N){
+Span::Span(unsigned int N):  _currentN(0), _N(N){
 	std::cout << "Constructor called\n";
 }
 
-Span::Span(const Span& src): _N(src._N){
+Span::Span(const Span& src): _numbers(src._numbers), _currentN(src._currentN), _N(src._N){
 	std::cout << "Copy constructor called\n";
 }
 
 Span &Span::operator=(const Span& src){
 	this->_N = src._N;
+	this->_currentN = src._currentN;
+	this->_numbers = src._numbers;
 	return *this;
 }
 
 Span::~Span(){
-	std::cout << "Copy constructor called\n";
+	std::cout << "Destructor called\n";
 }
 
 void	Span::addNumber(int nb){
@@ -24,14 +26,20 @@ void	Span::addNumber(int nb){
 	this->_numbers.push_back(nb);
 }
 
-void	Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
+	if (begin == end)
+		throw(std::exception());
+	int size = std::distance(begin, end);
+	if (this->_currentN == this->_N || this->_currentN + size >= this->_N)
+		throw(std::exception());
+
 	while (begin != end){
 		this->_numbers.push_back(*begin);
 		std::cout << *begin << std::endl;
 		++begin;
+		if (this->_currentN++ == this->_N)
+			throw(std::exception());
 	}
-	if (this->_currentN++ == this->_N)
-		throw(std::exception());
 }
 
 int		Span::shortestSpan(){
