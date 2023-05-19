@@ -18,17 +18,6 @@ int main(int argc, char **argv){
 			if (i + 1 != argc)
 				print_before += " ";
 		}
-
-		//Prints vector and list
-		// std::list<int>::iterator it;
-		// std::cout << "listo = ";
-		// for (it = listo.begin(); it != listo.end(); ++it)
-		// 	std::cout << *it << " ";
-		// std::cout << "vectoro = ";
-		// for (size_t i = 0; i < vectoro.size(); i++)
-        // 	std::cout << vectoro[i] << " ";
-		// std::cout << std::endl;;
-		
 		std::cout << "\033[1;33mBefore: \033[0m" << print_before << std::endl;
 		yoyo.sort_list(listo);
 		yoyo.sort_vector(vectoro);
