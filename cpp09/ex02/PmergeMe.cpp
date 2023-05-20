@@ -96,7 +96,7 @@ void PmergeMe::sort_list(std::list<int>& listo){
     double elapsed = seconds + microseconds * 1e-6;
 	std::cout << "Time to process a range of " << length <<
 		" elements with \033[1;32mstd::list\033[0m: ";
-	printf("%.6fs\n", elapsed);
+	std::cout << std::setprecision(6) << std::fixed << elapsed << "s" << std::endl;
 	return;
 }
 
@@ -116,7 +116,7 @@ void PmergeMe::sort_vector(std::vector<int>& vectoro){
     double elapsed = seconds + microseconds * 1e-6;
 	std::cout << "Time to process a range of " << length <<
 		" elements with \033[1;32mstd::vector\033[0m: ";
-	printf("%.6fs\n", elapsed);
+	std::cout << std::setprecision(6) << std::fixed << elapsed << "s" << std::endl;
 	return;
 }
 
