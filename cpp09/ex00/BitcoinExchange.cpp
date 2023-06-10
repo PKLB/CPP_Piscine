@@ -9,7 +9,6 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& src){
 }
 
 BitcoinExchange::~BitcoinExchange(){
-
 }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src){
@@ -50,12 +49,14 @@ int BitcoinExchange::check_date(std::string stringo)
 		stod(year), stod(month), stod(day);
 	}
 	catch(...){
-		std::cout << "Error: bad input => " << stringo << std::endl;
+		std::cout << "\033[1;31mError: bad input => " << stringo << "\033[0m" << std::endl;
 		return 1;
 	}
 	int day_int = stod(day);
 	int month_int = stod(month);
 	if (month_int < 0 || month_int > 12 || day_int < 0 || day_int > 31)
+		return 1;
+	if (month_int == 2 && day_int > 29)
 		return 1;
 	return 0;
 }
@@ -63,70 +64,71 @@ int BitcoinExchange::check_date(std::string stringo)
 void BitcoinExchange::check_data(std::string text, std::map<std::string, std::string> data){
 	std::string line;
 	std::ifstream input(text);
-	while (getline(input, line))
-	{
+	while (getline(input, line)){
 		std::stringstream ss(line);
 		std::string key, value;
 
 		getline(ss, key, ' ');
-		if (key.length() > 0)
-		{
+		if (key.length() > 0){
 			if (key == "date")
 				continue;
 			if (check_date(key) != 0)
 			{
-				std::cout << "Error: bad input => " << key << std::endl;
+				std::cout << "\033[1;31mError: bad input => " << key << "\033[0m" << std::endl;
 				continue ;
 			}
 		}
 		std::map<std::string, std::string>::iterator itr = data.find(key);
 		getline(ss, value);
-		if (value.length() < 2)
-		{
-			std::cout << "Error: bad value." << std::endl;
+		if (value.length() < 2){
+			std::cout << "\033[1;31mError: bad value." << "\033[0m" << std::endl;
 			continue ;
 		}
-		if (itr != data.lower_bound(key))
-		{
-			itr = data.lower_bound(key);
-			itr--;
+		try {
+			if (itr != data.lower_bound(key)){
+				itr = data.lower_bound(key);
+				if (itr != data.begin())
+					itr--;
+			}
+			if(itr == data.end())
+				continue ;
+			value = value.substr(2, value.length());
 		}
-		if(itr == data.end())
+		catch(...){
+			std::cout << "\033[1;31mError: bad value." << "\033[0m" << std::endl;
 			continue ;
-		value = value.substr(2, value.length());
+		}
 		try {
 			if (key == "date" && value == "value")
 				continue;
-			stod(value);
+			if (stod(value) <= 0)
+			{
+				std::cout << "\033[1;31mError: bad input => " << value << "\033[0m" << std::endl;
+				continue ;
+			}
 		}
-		catch(...)
-		{
-			std::cout << "Error: bad input => " << value << std::endl;
-			continue;
+		catch(...){
+			std::cout << "\033[1;31mError: bad input => " << value << "\033[0m" << std::endl;
+			continue ;
 		}
 		double new_value = stod(value);
-
-		if (new_value > 999)
-		{
-			std::cout << "Error: too large a number." << std::endl;
+		if (new_value > 999){
+			std::cout << "\033[1;31mError: too large a number." << "\033[0m" << std::endl;
 			continue ;
 		}
-		if (new_value < 0)
-		{
-			std::cout << "Error: not a positive number." << std::endl;
+		if (new_value < 0){
+			std::cout << "\033[1;31mError: not a positive number." << "\033[0m" << std::endl;
 			continue ;
 		}
-		try
-		{
+		try {
 			stod(itr->second);
 		}
-		catch(...)
-		{
-			std::cout << "Error: bad input => " << itr->second << std::endl;
+		catch(...){
+			std::cout << "\033[1;31mError: bad input => " << itr->second << "\033[0m" <<std::endl;
 			continue;
 		}
 		double second_new_value = stod(itr->second);
 		double result = new_value * second_new_value;
-		std::cout << key << " => " << value << " = " << result << std::endl;
+		std::cout << "\033[1;36m" << key << " \033[0m => \033[1;32m" << value << " \033[0m = \033[1;33m" << result << std::endl;
 	}
 }
