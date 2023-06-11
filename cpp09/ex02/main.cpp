@@ -19,8 +19,8 @@ int main(int argc, char **argv){
 				print_before += " ";
 		}
 		std::cout << "\033[1;33mBefore: \033[0m" << print_before << std::endl;
-		yoyo.sort_list(listo);
 		yoyo.sort_vector(vectoro);
+		yoyo.sort_list(listo);
 	}
 	else
 		std::cout << "\033[1;31mError: no arguments given.\033[0m" << std::endl;
