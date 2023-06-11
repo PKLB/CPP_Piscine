@@ -36,13 +36,25 @@ void RPN::calculate_data(std::string input_txt){
 			if (tok == "+")
 				result = nb2 + nb1;
 			if (tok == "/")
+			{
+				if (nb2 == 0 || nb1 == 0)
+				{
+					std::cout << "Error: cannot divide by 0" << std::endl;
+					return ;
+				}	
 				result = nb2 / nb1;
+			}
 			if (tok == "*")
 				result = nb2 * nb1;
 			if (tok == "-")
 				result = nb2 - nb1;
 			numbers.push(result);
 		}
+	}
+	if (numbers.size() > 1)
+	{
+		std::cout << "error" << std::endl;
+		return ;
 	}
 	while (!numbers.empty())
 	{
