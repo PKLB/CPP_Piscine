@@ -1,5 +1,5 @@
 CC= c++
-CFLAGS= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+CFLAGS= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g
 RM=rm -f
 NAME=btc
 SRCS= 	main.cpp \
