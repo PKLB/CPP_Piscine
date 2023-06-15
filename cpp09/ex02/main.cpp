@@ -20,7 +20,7 @@ int main(int argc, char **argv){
 		}
 		std::cout << "\033[1;33mBefore: \033[0m" << print_before << std::endl;
 		yoyo.do_algo(vectoro);
-		// yoyo.sort_list(listo);
+		yoyo.do_algo_list(listo);
 	}
 	else
 		std::cout << "\033[1;31mError: no arguments given.\033[0m" << std::endl;
