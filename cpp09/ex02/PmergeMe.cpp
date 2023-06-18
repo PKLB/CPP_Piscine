@@ -61,13 +61,14 @@ void ford_johnson_list(std::list<int>& listo) {
 
 void  PmergeMe::do_algo_list(std::list<int> listo) {
     struct timeval begin, end;
+    int sizo = listo.size();
     gettimeofday(&begin, 0);
     ford_johnson_list(listo);
     gettimeofday(&end, 0);
     long seconds = end.tv_sec - begin.tv_sec;
     long microseconds = end.tv_usec - begin.tv_usec;
     double elapsed = seconds + microseconds * 1e-6;
-	std::cout << "Time to process a range of " << listo.size() <<
+	std::cout << "Time to process a range of " << sizo <<
 		" elements with \033[1;32mstd::list\033[0m: ";
 	std::cout << std::setprecision(6) << std::fixed << elapsed << "s" << std::endl;
 }
@@ -110,6 +111,7 @@ void ford_johnson(std::vector<int>& vectoro) {
     ford_johnson(left);
     ford_johnson(right);
     merge(left, right, sorted);
+    
     std::vector<int> remaining(vectoro.begin(), middle);
     for (std::vector<int>::iterator it = remaining.begin(); it != remaining.end(); ++it) {
         std::vector<int>::iterator insertPos = std::lower_bound(sorted.begin(), sorted.end(), *it);
@@ -129,13 +131,17 @@ void  PmergeMe::do_algo(std::vector<int> vectoro) {
     double elapsed = seconds + microseconds * 1e-6;
     std::cout << "\033[1;33mAfter: \033[0m: ";
 	int tmp;
+    int sizo = 0;
     for (std::vector<int>::iterator it = vectoro.begin(); it != vectoro.end(); ++it) {
         if (tmp != *it)
+        {
 			std::cout << *it << " ";
+            sizo++;
+        }
 		tmp = *it;
     }
     std::cout << std::endl;
-	std::cout << "Time to process a range of " << vectoro.size() <<
+	std::cout << "Time to process a range of " << sizo <<
 		" elements with \033[1;32mstd::vector\033[0m: ";
 	std::cout << std::setprecision(6) << std::fixed << elapsed << "s" << std::endl;
 }
