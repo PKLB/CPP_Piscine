@@ -69,6 +69,8 @@ void RPN::calculate_data(std::string input_txt){
 int RPN::check_data(std::string input_txt){
 	std::stringstream stream(input_txt);
 	std::string tok;
+	int digit_count = 0;
+	int sign_count = 0;
 	while (getline(stream, tok, ' '))
 	{
 		if (tok.length() > 1)
@@ -80,12 +82,20 @@ int RPN::check_data(std::string input_txt){
 		{
 			if (stod(tok) > 10 || stod(tok) < 0)
 				std::cout << "Error" << std::endl;
+			digit_count++;
 		}
 		else if (tok != "-" && tok != "+" && tok != "/" && tok != "*")
 		{
 			std::cout << "Error" << std::endl;
 			return 1;
 		}
+		if (tok == "-" || tok == "+" || tok == "/" || tok == "*")
+			sign_count++;
+	}
+	if (sign_count >= digit_count)
+	{
+		std::cout << "Error" << std::endl;
+		return 1;
 	}
 	return 0;
 }
